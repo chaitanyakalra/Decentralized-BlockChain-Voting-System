@@ -1,0 +1,43 @@
+MySQL commands
+win+r -> services.msc  -> start mysql server
+C:\Program Files\MySQL\MySQL Server 8.0\bin>
+mysqld
+
+mysql -u root
+
+with password
+mysql -u root -p
+password -> 12345
+USE voting_db;        
+
+
+open ganache
+
+ truffle console
+ compile
+ browserify ./src/js/app.js -o ./src/dist/app.bundle.js
+ node index.js
+
+
+
+IN  cd Database_API   run
+
+ uvicorn main:app --reload --host 127.0.0.1
+
+
+ truffle migrate
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM voters;
+
+INSERT INTO voters (voter_id, password, role) 
+VALUES ('voter789', 'newpassword', 'user');

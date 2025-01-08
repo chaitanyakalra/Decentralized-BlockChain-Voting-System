@@ -1,0 +1,66 @@
+1. Understanding International Standards
+ISO/TC 307: The International Organization for Standardization (ISO) has established this technical committee to develop standards for blockchain and distributed ledger technologies.
+ISO 22739: Vocabulary for blockchain and distributed ledger technologies.
+ISO 30701: Guidelines for governance.
+ISO/TR 23244: Privacy and personally identifiable information (PII) protection in blockchain.
+ISO/TR 23576: Security management of digital asset custodians.
+Other frameworks like NIST guidelines (National Institute of Standards and Technology) can also provide insights into security considerations.
+
+
+2. Key Areas of Blockchain Security
+Cryptography Standards:
+Secure cryptographic algorithms like AES, SHA-256, or elliptic curve cryptography.
+Consensus Mechanisms:
+Security vulnerabilities in Proof of Work (PoW), Proof of Stake (PoS), and others.
+Smart Contract Security:
+Verification, testing, and audit standards for smart contracts.
+Identity and Access Management:
+Standards for authentication, authorization, and identity management in blockchain.
+Data Privacy:
+Implementing GDPR-compliant privacy-preserving techniques in blockchain.
+Interoperability:
+Standards ensuring secure interaction between different blockchain platforms.
+
+
+3. Implementation Feasibility
+Analysis of Existing Implementations:
+Study blockchain networks (Ethereum, Hyperledger, etc.) to analyze their compliance with international standards.
+Development of Security Protocols:
+Implement protocols aligned with ISO and NIST guidelines.
+Testing and Auditing:
+Use automated tools for vulnerability assessments and penetration testing.
+Pilot Projects:
+Develop a pilot blockchain application and test its security against international standards.
+
+
+CURRENT PURPOSE
+Enhancing and Analyzing Project in terms of ISO
+1. Security Analysis and Compliance
+ISO/TC 307 Standards:
+ISO 22739:  Terminology and Process Validation
+(Source - www.iso.org)
+(https://www.iso.org/obp/ui/en/#iso:std:iso:22739:ed-2:v1:en:term:3.55)
+
+Asset: Anything that has value to a stakeholder. 
+
+Block: Structured data comprising a block header and block data. 
+
+Blockchain: Distributed ledger with confirmed blocks organized in an append-only, sequential chain using hash links. 
+
+Consensus: Agreement among DLT nodes that a transaction is validated and the distributed ledger contains a consistent set and ordering of records of validated transactions. 
+
+Cryptoasset: Digital asset implemented using cryptographic techniques. 
+
+Cryptocurrency: Cryptoasset designed to work as a medium of payment or value exchange. 
+
+Decentralized Application (Dapp): Application that runs on a decentralized system. 
+
+Distributed Ledger: Ledger that is shared across a set of DLT nodes and synchronized between the nodes using a consensus mechanism. 
+
+DLT Node: Device or process that participates in a network and stores a complete or partial replica of the ledger records. 
+
+Smart Contract: Program stored and executed across a DLT system that encapsulates contractual clauses under which parties agree to interact. 
+
+Transaction: Record of an event that is stored in a distributed ledger. 
+
+Validator: DLT node that is responsible for validating transactions and blocks in a DLT system

@@ -15,7 +15,6 @@
 ## Requirements
 - Node.js (version – 18.14.0)
 - Metamask
-- Python (version – 3.9)
 - FastAPI
 - MySQL Database (port – 3306)
 

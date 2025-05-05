@@ -46,8 +46,8 @@
 </html> -->
 
 
-
-<!DOCTYPE html>
+<!-- admin.html -->
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -98,4 +98,232 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="../dist/app.bundle.js" defer></script>
   </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Portal</title>
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Admin Portal</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#candidates">
+                            <i class="fas fa-users"></i>
+                            <span>Candidates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#voting-dates">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Voting Dates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#results">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Results</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div id="accountAddress" class="wallet-address">
+                        <i class="fas fa-wallet"></i>
+                        <span>Not connected</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Dashboard Overview -->
+                <section class="dashboard-section" id="dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Candidates</h3>
+                                <p class="stat-value" id="totalCandidates">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-vote-yea"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Votes</h3>
+                                <p class="stat-value" id="totalVotes">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Voting Status</h3>
+                                <p class="stat-value" id="votingStatus">Not Started</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Candidates Management -->
+                <section class="content-section" id="candidates">
+                    <div class="section-header">
+                        <h2>Manage Candidates</h2>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add New Candidate</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Candidate Name</label>
+                                    <input id="name" type="text" name="name" placeholder="Enter candidate's name" autocomplete="off" class="form  type="text" name="name" placeholder="Enter candidate's name" autocomplete="off" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="party">Party Name</label>
+                                    <input id="party" type="text" name="party" placeholder="Enter party name" class="form-control">
+                                </div>
+                                <div class="form-actions">
+                                    <button id="addCandidate" type="button" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Add Candidate
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="msg" class="message"></div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Current Candidates</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Party</th>
+                                            <th>Votes</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="candidatesList">
+                                        <!-- Candidates will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Voting Dates Management -->
+                <section class="content-section" id="voting-dates">
+                    <div class="section-header">
+                        <h2>Manage Voting Dates</h2>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Set Voting Period</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form-grid">
+                                <div class="form-group">
+                                    <label for="startDate">Start Date</label>
+                                    <input id="startDate" type="datetime-local" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate">End Date</label>
+                                    <input id="endDate" type="datetime-local" class="form-control">
+                                </div>
+                                <div class="form-actions">
+                                    <button id="addDate" type="button" class="btn btn-primary">
+                                        <i class="fas fa-calendar-check"></i> Define Dates
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Current Voting Period</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="current-dates">
+                                <p id="dates">No voting period has been set.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmation</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelAction">Cancel</button>
+                <button class="btn btn-primary" id="confirmAction">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="../dist/app.bundle.js" defer></script>
+</body>
 </html>

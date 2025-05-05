@@ -37,7 +37,7 @@ CURRENT PURPOSE
 Enhancing and Analyzing Project in terms of ISO
 1. Security Analysis and Compliance
 ISO/TC 307 Standards:
-ISO 22739:  Terminology and Process Validation
+(I)  ISO 22739:  (a) Terminology and Process Validation
 (Source - www.iso.org)
 (https://www.iso.org/obp/ui/en/#iso:std:iso:22739:ed-2:v1:en:term:3.55)
 
@@ -64,3 +64,8 @@ Smart Contract: Program stored and executed across a DLT system that encapsulate
 Transaction: Record of an event that is stored in a distributed ledger. 
 
 Validator: DLT node that is responsible for validating transactions and blocks in a DLT system
+
+(b) Process Validation:  flowchart of the workFLow of the project  https://drive.google.com/file/d/1QXKc4qx_JPpUp4ohE3a4OLl_kNyuVd7n/view?usp=sharing
+
+
+(II)  ISO/TR 23576: Digital Asset Management Compliance

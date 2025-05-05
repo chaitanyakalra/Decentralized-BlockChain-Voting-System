@@ -47,8 +47,8 @@
   </body>
 </html> -->
 
-
-<!DOCTYPE html>
+<!-- index.html -->
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -95,4 +95,136 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="../dist/app.bundle.js" type="module"></script>
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voting Page</title>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Blockchain Voting</span>
+                </div>
+                <div class="wallet-info">
+                    <div id="accountAddress" class="wallet-address">
+                        <i class="fas fa-wallet"></i>
+                        <span>Not connected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="voting-status">
+            <div class="status-card">
+                <div class="status-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Voting Period</h3>
+                    <p id="dates">Loading voting dates...</p>
+                    <div class="countdown" id="countdown">
+                        <div class="time-block">
+                            <span class="time" id="days">00</span>
+                            <span class="label">Days</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="time" id="hours">00</span>
+                            <span class="label">Hours</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="time" id="minutes">00</span>
+                            <span class="label">Minutes</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="time" id="seconds">00</span>
+                            <span class="label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="voter-status">
+                <div class="status-badge" id="voter-status">
+                    <i class="fas fa-circle-check"></i>
+                    <span>You can vote</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="candidates-section">
+            <h2>Candidates</h2>
+            <div class="candidates-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>Total Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="boxCandidate">
+                        <!-- Candidates will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="voting-action">
+                <p>Please select one of the candidates and click the vote button.</p>
+                <button id="voteButton" class="btn btn-primary" onclick="App.vote()" disabled>
+                    <i class="fas fa-check-circle"></i> Cast Your Vote
+                </button>
+                <div id="msg" class="message"></div>
+                <div id="vote-box"></div>
+            </div>
+        </div>
+
+        <div class="results-section" id="results-section">
+            <h2>Current Results</h2>
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Blockchain Voting System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Your Vote</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>You are about to vote for <span id="candidateName">Candidate</span>.</p>
+                <p>This action cannot be undone. Do you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelVote">Cancel</button>
+                <button class="btn btn-primary" id="confirmVote">Confirm Vote</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../dist/app.bundle.js" type="module"></script>
+</body>
 </html>

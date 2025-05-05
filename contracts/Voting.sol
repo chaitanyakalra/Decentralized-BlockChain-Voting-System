@@ -1,5 +1,5 @@
-pragma solidity ^0.5.15;
-
+// pragma solidity ^0.5.15;
+pragma solidity ^0.8.0;
 //NEW CODE
 contract Voting {
     address public owner; // Owner address to manage voting dates
@@ -26,7 +26,7 @@ contract Voting {
         _;
     }
 
-    constructor() public {
+    constructor() {
         owner = msg.sender; // Set the contract deployer as the owner
     }
 
@@ -48,10 +48,10 @@ contract Voting {
 
     function vote(uint candidateID) public {
     emit Debug("Checking voting start time");
-    require(votingStart > 0 && block.timestamp >= votingStart, "Voting has not started.");
+    require(block.timestamp >= votingStart, "Voting has not started yet!");
 
     emit Debug("Checking voting end time");
-    require(block.timestamp <= votingEnd, "Voting has ended.");
+    require(block.timestamp <= votingEnd, "Voting has ended!");
 
     emit Debug("Checking candidate ID");
     require(candidateID > 0 && candidateID <= countCandidates, "Invalid candidate ID.");
@@ -83,11 +83,16 @@ contract Voting {
     }
 
     // Set voting start and end dates (only by the contract owner)
-    function setDates(uint256 _startDate, uint256 _endDate) public{
-        require((votingEnd == 0) && (votingStart == 0) && (_startDate + 1000000 > block.timestamp) && (_endDate > _startDate));
-        votingEnd = _endDate;
-        votingStart = _startDate;
-    }
+    function setDates(uint256 _startDate, uint256 _endDate) public {
+    require(votingEnd == 0, "Voting already ended!");
+    require(votingStart == 0, "Voting already started!");
+    require(_startDate + 1000000 > block.timestamp, "Start date too soon!");
+    require(_endDate > _startDate, "End date must be after start date!");
+    
+    votingEnd = _endDate;
+    votingStart = _startDate;
+}
+
 
 
     // Get the voting start and end dates

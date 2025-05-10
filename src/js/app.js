@@ -221,10 +221,15 @@ var App = {
   
     // Add candidate
     $("#addCandidate").on("click", function () {
+      console.log("[AddCandidate] Add button clicked");
       const nameCandidate = $("#name").val();
       const partyCandidate = $("#party").val();
   
+      console.log("[AddCandidate] Candidate Name:", nameCandidate);
+      console.log("[AddCandidate] Party:", partyCandidate);
+  
       if (!nameCandidate || !partyCandidate) {
+        console.warn("[AddCandidate] Missing fields");
         $("#msg").html(`
           <div class="message error">
             <i class="fas fa-exclamation-circle"></i> Please fill in all fields
@@ -235,8 +240,12 @@ var App = {
       $(this).html('<i class="fas fa-circle-notch fa-spin"></i> Adding...').prop("disabled", true);
   
       VotingContract.deployed()
-        .then((instance) => instance.addCandidate(nameCandidate, partyCandidate))
+        .then((instance) => {
+          console.log("[AddCandidate] Contract instance obtained");
+          return instance.addCandidate(nameCandidate, partyCandidate);
+        })
         .then(() => {
+          console.log(`[AddCandidate] Candidate "${nameCandidate}" added successfully`);
           $("#msg").html(`
             <div class="message success">
               <i class="fas fa-check-circle"></i> Candidate "${nameCandidate}" added successfully!
@@ -247,7 +256,7 @@ var App = {
           App.loadCandidates();
         })
         .catch((err) => {
-          console.error("[App.initAdminUI] Error adding candidate:", err);
+          console.error("[AddCandidate] Error adding candidate:", err);
           $("#msg").html(`
             <div class="message error">
               <i class="fas fa-exclamation-circle"></i> Error adding candidate: ${err.message}
@@ -261,10 +270,15 @@ var App = {
   
     // Set voting dates
     $("#addDate").on("click", function () {
+      console.log("[AddDate] Set dates button clicked");
       const startDate = Date.parse($("#startDate").val()) / 1000;
       const endDate = Date.parse($("#endDate").val()) / 1000;
   
+      console.log("[AddDate] Start Date (epoch):", startDate);
+      console.log("[AddDate] End Date (epoch):", endDate);
+  
       if (!startDate || !endDate) {
+        console.warn("[AddDate] Start or End date is missing");
         $("#dates").html(`
           <div class="message error">
             <i class="fas fa-exclamation-circle"></i> Please select both start and end dates
@@ -273,6 +287,7 @@ var App = {
       }
   
       if (endDate <= startDate) {
+        console.warn("[AddDate] Invalid date range");
         $("#dates").html(`
           <div class="message error">
             <i class="fas fa-exclamation-circle"></i> End date must be after start date
@@ -283,9 +298,12 @@ var App = {
       $(this).html('<i class="fas fa-circle-notch fa-spin"></i> Setting Dates...').prop("disabled", true);
   
       VotingContract.deployed()
-        .then((instance) => instance.setDates(startDate, endDate, { from: App.account, gas: 300000 }))
+        .then((instance) => {
+          console.log("[AddDate] Contract instance obtained");
+          return instance.setDates(startDate, endDate, { from: App.account, gas: 300000 });
+        })
         .then((tx) => {
-          console.log("Dates set:", tx);
+          console.log("[AddDate] Dates set successfully. Tx:", tx);
           $("#dates").html(`
             <div class="message success">
               <i class="fas fa-check-circle"></i> Voting dates set successfully!
@@ -293,7 +311,7 @@ var App = {
           App.loadVotingDates();
         })
         .catch((err) => {
-          console.error("[App.initAdminUI] Error setting dates:", err);
+          console.error("[AddDate] Error setting dates:", err);
           $("#dates").html(`
             <div class="message error">
               <i class="fas fa-exclamation-circle"></i> Error setting dates: ${err.message}
@@ -307,7 +325,7 @@ var App = {
   
     // Reset voting dates
     $("#resetDates").on("click", function () {
-      console.log("[App.initAdminUI] Reset dates button clicked");
+      console.log("[ResetDates] Reset dates button clicked");
   
       const defaultStartDate = new Date();
       defaultStartDate.setDate(defaultStartDate.getDate() + 1);
@@ -316,6 +334,9 @@ var App = {
       const defaultEndDate = new Date(defaultStartDate);
       defaultEndDate.setDate(defaultEndDate.getDate() + 7);
       defaultEndDate.setHours(17, 0, 0, 0);
+  
+      console.log("[ResetDates] Default start:", defaultStartDate);
+      console.log("[ResetDates] Default end:", defaultEndDate);
   
       const formatDateForInput = (date) => {
         const year = date.getFullYear();

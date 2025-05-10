@@ -29,7 +29,6 @@ IN  cd Database_API   run
 
 
 
-to reset dates of the voting
 truffle migrate --reset --network development
 
 

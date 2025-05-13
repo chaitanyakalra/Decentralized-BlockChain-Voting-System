@@ -449,6 +449,43 @@
             justify-content: flex-end;
             gap: 10px;
         }
+        .verify-vote-container {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.verify-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.verify-button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.verify-button:hover {
+  background-color: #45a049;
+}
+
+.verify-result {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -555,6 +592,19 @@
                 <div id="vote-box"></div>
             </div>
         </div>
+
+       <div class="verify-vote-container">
+  <label for="voterAddress">Your Voting Hash:</label>
+  <input type="text" id="voterAddress" class="verify-input" placeholder="Enter your Hash" />
+
+
+  <button id="verifyVoteButton" class="verify-button" aria-label="Verify your submitted vote">
+    ✅ Verify My Vote
+  </button>
+
+  <div id="verifyResult" class="verify-result" aria-live="polite"></div>
+</div>
+
 
         <div class="results-section" id="results-section">
             <h2>Current Results</h2>

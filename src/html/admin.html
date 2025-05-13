@@ -526,6 +526,151 @@
       gap: 10px;
     }
 
+    .candidate-scorecard {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+            .scorecard-container {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #3f51b5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .candidate-info {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .candidate-photo {
+            width: 120px;
+            height: 120px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: #757575;
+            font-size: 40px;
+        }
+        .candidate-details {
+            flex: 1;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .party {
+            font-size: 18px;
+            color: #3f51b5;
+            margin-bottom: 10px;
+        }
+        .basic-info {
+            margin-bottom: 15px;
+        }
+        .info-item {
+            margin-bottom: 5px;
+        }
+        .assessment-section {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #3f51b5;
+            padding-bottom: 5px;
+        }
+        .score-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .score-card {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 0 5px;
+            color: white;
+            position: relative;
+        }
+        .score-card.criminal {
+            background-color: #4caf50;
+        }
+        .score-card.education {
+            background-color: #2196f3;
+        }
+        .score-card.financial {
+            background-color: #ff9800;
+        }
+        .score-card.performance {
+            background-color: #9c27b0;
+        }
+        .score-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .score-label {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .total-score {
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        .total-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3f51b5;
+        }
+        .assessment-label {
+            display: inline-block;
+            padding: 8px 16px;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        @media (max-width: 600px) {
+            .candidate-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .candidate-photo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .score-summary {
+                flex-wrap: wrap;
+            }
+            .score-card {
+                flex: 1 0 40%;
+                margin-bottom: 10px;
+            }
+        }
+
+
     /* Responsive */
     @media (max-width: 992px) {
       .sidebar {
@@ -666,6 +811,8 @@
           </div>
         </section>
 
+        
+
         <!-- Candidates Management -->
         <section class="content-section" id="candidates">
           <div class="section-header">
@@ -789,6 +936,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="../dist/app.bundle.js" defer></script>
+  
+<!-- Template for candidate cards (place at the bottom of the body) -->
+
 </body>
 
 </html>

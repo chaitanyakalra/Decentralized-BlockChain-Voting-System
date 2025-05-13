@@ -94,92 +94,180 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (this.value === "voter") {
       // Show voter-specific fields or change UI
       console.log("[login.js] Voter role selected")
+    } else if (this.value === "election_commission") {
+      // Show voter-specific fields or change UI
+      console.log("[login.js] Election Commission role selected")
     }
   })
 
   // Login form submission
-  loginForm.addEventListener("submit", (event) => {
-    event.preventDefault()
-    console.log("[login.js] Login form submitted")
+  // loginForm.addEventListener("submit", (event) => {
+  //   event.preventDefault()
+  //   console.log("[login.js] Login form submitted")
 
-    const voter_id = document.getElementById("voter-id").value
-    const password = document.getElementById("password").value
+  //   const voter_id = document.getElementById("voter-id").value
+  //   const password = document.getElementById("password").value
 
-    if (!voter_id || !password) {
-      showMessage("Please fill in all fields", "error")
-      return
-    }
+  //   if (!voter_id || !password) {
+  //     showMessage("Please fill in all fields", "error")
+  //     return
+  //   }
 
-    // Prepare data to be sent to the backend
-    const data = {
-      voter_id: voter_id,
-      password: password,
-      role: roleSelect.value,
-    }
+  //   // Prepare data to be sent to the backend
+  //   const data = {
+  //     voter_id: voter_id,
+  //     password: password,
+  //     role: roleSelect.value,
+  //   }
 
-    console.log("[login.js] Sending login data:", data)
+  //   console.log("[login.js] Sending login data:", data)
 
-    // Simulate API call with animation
-    const submitBtn = loginForm.querySelector('button[type="submit"]')
-    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Logging in...'
-    submitBtn.disabled = true
+  //   // Simulate API call with animation
+  //   const submitBtn = loginForm.querySelector('button[type="submit"]')
+  //   submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Logging in...'
+  //   submitBtn.disabled = true
 
-    // Use POST request to send login data to the backend
-    fetch("http://127.0.0.1:8000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error("Login failed")
-        }
-      })
-      .then((data) => {
-        console.log("[login.js] Login successful:", data)
+  //   // Use POST request to send login data to the backend
+  //   fetch("http://127.0.0.1:8000/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json()
+  //       } else {
+  //         throw new Error("Login failed")
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log("[login.js] Login successful:", data)
 
-        // Check if the response contains the user role and JWT token
-        if (data.role === "admin") {
-          localStorage.setItem("jwtTokenAdmin", data.token)
-          showMessage("Login successful! Redirecting to admin panel...", "success")
+  //       // Check if the response contains the user role and JWT token
+  //       if (data.role === "admin") {
+  //         localStorage.setItem("jwtTokenAdmin", data.token)
+  //         showMessage("Login successful! Redirecting to admin panel...", "success")
 
-          // Redirect after a short delay for better UX
-          setTimeout(() => {
-            window.location.replace(
-              `http://127.0.0.1:8080/admin.html?Authorization=Bearer ${localStorage.getItem("jwtTokenAdmin")}`,
-            )
-          }, 1500)
-        } else if (data.role === "user") {
-          localStorage.setItem("jwtTokenVoter", data.token)
-          showMessage("Login successful! Redirecting to voting page...", "success")
+  //         // Redirect after a short delay for better UX
+  //         setTimeout(() => {
+  //           window.location.replace(
+  //             `http://127.0.0.1:8080/admin.html?Authorization=Bearer ${localStorage.getItem("jwtTokenAdmin")}`,
+  //           )
+  //         }, 1500)
+  //       } else if (data.role === "user") {
+  //         localStorage.setItem("jwtTokenVoter", data.token)
+  //         showMessage("Login successful! Redirecting to voting page...", "success")
 
-          // Redirect after a short delay for better UX
-          setTimeout(() => {
-            window.location.replace(
-              `http://127.0.0.1:8080/index.html?Authorization=Bearer ${localStorage.getItem("jwtTokenVoter")}`,
-            )
-          }, 1500)
-        } else {
-          throw new Error("Invalid role")
-        }
-      })
-      .catch((error) => {
-        console.error("[login.js] Login failed:", error.message)
-        showMessage("Login failed. Please check your credentials and try again.", "error")
+  //         // Redirect after a short delay for better UX
+  //         setTimeout(() => {
+  //           window.location.replace(
+  //             `http://127.0.0.1:8080/index.html?Authorization=Bearer ${localStorage.getItem("jwtTokenVoter")}`,
+  //           )
+  //         }, 1500)
+  //       } else {
+  //         throw new Error("Invalid role")
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("[login.js] Login failed:", error.message)
+  //       showMessage("Login failed. Please check your credentials and try again.", "error")
 
-        // Reset button
-        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
-        submitBtn.disabled = false;
+  //       // Reset button
+  //       submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+  //       submitBtn.disabled = false;
 
-        // Reset button
-        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login'
-        submitBtn.disabled = false
-      })
+  //       // Reset button
+  //       submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login'
+  //       submitBtn.disabled = false
+  //     })
+  // })
+
+  // Login form submission
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  console.log("[login.js] Login form submitted")
+
+  const voter_id = document.getElementById("voter-id").value
+  const password = document.getElementById("password").value
+
+  if (!voter_id || !password) {
+    showMessage("Please fill in all fields", "error")
+    return
+  }
+
+  // Prepare data to be sent to the backend
+  const data = {
+    voter_id: voter_id,
+    password: password,
+    role: roleSelect.value,
+  }
+
+  console.log("[login.js] Sending login data:", data)
+
+  // Simulate API call with animation
+  const submitBtn = loginForm.querySelector('button[type="submit"]')
+  submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Logging in...'
+  submitBtn.disabled = true
+
+  // Use POST request to send login data to the backend
+  fetch("http://127.0.0.1:8000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
   })
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error("Login failed")
+      }
+    })
+    .then((data) => {
+      console.log("[login.js] Login successful:", data)
+
+      // Handle based on role
+      if (data.role === "admin") {
+        localStorage.setItem("jwtTokenAdmin", data.token)
+        showMessage("Login successful! Redirecting to admin panel...", "success")
+        setTimeout(() => {
+          window.location.replace(
+            `http://127.0.0.1:8080/admin.html?Authorization=Bearer ${localStorage.getItem("jwtTokenAdmin")}`,
+          )
+        }, 1500)
+      } else if (data.role === "user") {
+        localStorage.setItem("jwtTokenVoter", data.token)
+        showMessage("Login successful! Redirecting to voting page...", "success")
+        setTimeout(() => {
+          window.location.replace(
+            `http://127.0.0.1:8080/index.html?Authorization=Bearer ${localStorage.getItem("jwtTokenVoter")}`,
+          )
+        }, 1500)
+      } else if (data.role === "election_commission") {
+        localStorage.setItem("jwtTokenEC", data.token)
+        showMessage("Login successful! Redirecting to Election Commission dashboard...", "success")
+        setTimeout(() => {
+          window.location.replace(
+            `https://candidatescan.netlify.app?Authorization=Bearer ${localStorage.getItem("jwtTokenEC")}`,
+          )
+        }, 1500)
+      } else {
+        throw new Error("Invalid role")
+      }
+    })
+    .catch((error) => {
+      console.error("[login.js] Login failed:", error.message)
+      showMessage("Login failed. Please check your credentials and try again.", "error")
+
+      // Reset button
+      submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login'
+      submitBtn.disabled = false
+    })
+})
+
 
   // Helper function to show messages
   function showMessage(message, type) {

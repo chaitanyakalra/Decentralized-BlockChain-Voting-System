@@ -3,7 +3,7 @@ win+r -> services.msc  -> start mysql server
 C:\Program Files\MySQL\MySQL Server 8.0\bin>
 mysqld
 
-mysql -u root    
+mysql -u root;
 .\mysql -u root -p
 with password
 mysql -u root -p
